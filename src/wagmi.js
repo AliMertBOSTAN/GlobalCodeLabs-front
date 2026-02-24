@@ -1,0 +1,18 @@
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { hardhat, mainnet, sepolia } from 'wagmi/chains';
+
+const localHardhat = {
+  ...hardhat,
+  id: 31337,
+  name: 'Hardhat Localhost',
+  rpcUrls: {
+    default: { http: ['http://127.0.0.1:8545'] },
+  },
+};
+
+export const config = getDefaultConfig({
+  appName: 'MERT Token Exchange',
+  projectId: import.meta.env.VITE_WC_PROJECT_ID || 'demo-project-id',
+  chains: [localHardhat, mainnet, sepolia],
+  ssr: false,
+});
